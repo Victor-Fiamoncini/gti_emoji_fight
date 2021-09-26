@@ -8,6 +8,7 @@ function __autoload(string $className): void
     $folders = [
         'builders' . $sep,
         'entities' . $sep,
+        'entities' . $sep . 'types' . $sep,
     ];
 
     foreach ($folders as $folder) {

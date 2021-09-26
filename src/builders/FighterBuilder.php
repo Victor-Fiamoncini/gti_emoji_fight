@@ -2,68 +2,71 @@
 
 class FighterBuilder
 {
-    public string $name = null;
-    public string $nationality = null;
-    public int $age = null;
-    public float $height = null;
-    public float $weight = null;
-    public string $category = null;
-    public int $wins = null;
-    public int $losses = null;
-    public int $draws = null;
+    public string $name;
+    public string $nationality;
+    public int $age;
+    public float $height;
+    public float $weight;
+    public string $category;
 
     public function __construct(string $name)
     {
         $this->name = $name;
-        return $this;
     }
 
     public function setNationality(string $nationality)
     {
         $this->nationality = $nationality;
+
         return $this;
     }
 
     public function setAge(string $age)
     {
         $this->age = $age;
+
         return $this;
     }
 
     public function setHeight(string $height)
     {
         $this->height = $height;
+
         return $this;
     }
 
     public function setWeight(string $weight)
     {
         $this->weight = $weight;
+
         return $this;
     }
 
-    public function setCategory(string $category)
+    public function setCategory()
     {
-        $this->category = $category;
-        return $this;
-    }
+        if (!isset($this->weight) || $this->weight < 52.2) {
+            throw new Error('Invalid or non-existent weight');
+        }
 
-    public function setWins(string $wins)
-    {
-        $this->wins = $wins;
-        return $this;
-    }
+        if ($this->weight <= 70.3) {
+            $this->category = Category::LIGHTWEIGHT;
 
-    public function setLosses(string $losses)
-    {
-        $this->losses = $losses;
-        return $this;
-    }
+            return $this;
+        }
 
-    public function setDraws(string $draws)
-    {
-        $this->draws = $draws;
-        return $this;
+        if ($this->weight <= 83.9) {
+            $this->category = Category::MIDDLEWEIGHT;
+
+            return $this;
+        }
+
+        if ($this->weight <= 120.2) {
+            $this->category = Category::HEAVYWEIGHT;
+
+            return $this;
+        }
+
+        throw new Error('Invalid weight');
     }
 
     public function build()
