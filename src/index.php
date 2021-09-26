@@ -29,10 +29,9 @@ try {
         ->setDraws(3)
         ->build();
 
-    $fight = new Fight();
+    $fight = new Fight($fighter01, $fighter02);
 
-    $fight->scheduleFight($fighter01, $fighter02);
-    $fight->beginFight();
+    $fight->scheduleFight()->beginFight();
 } catch (Throwable $th) {
     echo $th->getMessage();
 }

@@ -2,11 +2,15 @@
 
 class Fight
 {
-    private ?Fighter $challenged = null;
-    private ?Fighter $challenger = null;
-    private ?bool $isApproved = null;
+    private Fighter $challenged;
+    private Fighter $challenger;
+    private bool $isApproved;
 
-    public function __construct() {}
+    public function __construct(Fighter $challenged, Fighter $challenger) {
+        $this->challenged = $challenged;
+        $this->challenger = $challenger;
+        $this->isApproved = false;
+    }
 
     public function cancelFight()
     {
@@ -15,11 +19,8 @@ class Fight
         $this->isApproved = false;
     }
 
-    public function scheduleFight(Fighter $challenged, Fighter $challenger)
+    public function scheduleFight()
     {
-        $this->challenged = $challenged;
-        $this->challenger = $challenger;
-
         if ($this->challenged->getCatergory() !== $this->challenger->getCatergory()) {
             $this->cancelFight();
 
@@ -33,6 +34,8 @@ class Fight
         }
 
         $this->isApproved = true;
+
+        return $this;
     }
 
     public function beginFight()

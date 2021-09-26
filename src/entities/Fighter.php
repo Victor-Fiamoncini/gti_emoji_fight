@@ -2,15 +2,15 @@
 
 class Fighter
 {
-    private string $name = '';
-    private string $nationality = '';
-    private int $age = 0;
-    private float $height = 0;
-    private float $weight = 0;
-    private string $category = '';
-    private int $wins = 0;
-    private int $losses = 0;
-    private int $draws = 0;
+    private string $name;
+    private string $nationality;
+    private int $age;
+    private float $height;
+    private float $weight;
+    private string $category;
+    private int $wins;
+    private int $losses;
+    private int $draws;
 
     public function __construct(FighterBuilder $fighterBuilder)
     {
