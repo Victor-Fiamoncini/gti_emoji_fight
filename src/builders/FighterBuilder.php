@@ -2,16 +2,21 @@
 
 class FighterBuilder
 {
-    public string $name;
-    public string $nationality;
-    public int $age;
-    public float $height;
-    public float $weight;
-    public string $category;
+    public string $name = '';
+    public string $nationality = '';
+    public int $age = 0;
+    public float $height = 0;
+    public float $weight = 0;
+    public string $category = '';
+    public int $wins = 0;
+    public int $losses = 0;
+    public int $draws = 0;
 
-    public function __construct(string $name)
+    public function setName(string $name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     public function setNationality(string $nationality)
@@ -21,21 +26,21 @@ class FighterBuilder
         return $this;
     }
 
-    public function setAge(string $age)
+    public function setAge(int $age)
     {
         $this->age = $age;
 
         return $this;
     }
 
-    public function setHeight(string $height)
+    public function setHeight(float $height)
     {
         $this->height = $height;
 
         return $this;
     }
 
-    public function setWeight(string $weight)
+    public function setWeight(float $weight)
     {
         $this->weight = $weight;
 
@@ -49,24 +54,45 @@ class FighterBuilder
         }
 
         if ($this->weight <= 70.3) {
-            $this->category = Category::LIGHTWEIGHT;
+            $this->category = Category::LIGHT;
 
             return $this;
         }
 
         if ($this->weight <= 83.9) {
-            $this->category = Category::MIDDLEWEIGHT;
+            $this->category = Category::MIDDLE;
 
             return $this;
         }
 
         if ($this->weight <= 120.2) {
-            $this->category = Category::HEAVYWEIGHT;
+            $this->category = Category::HEAVY;
 
             return $this;
         }
 
         throw new Error('Invalid weight');
+    }
+
+    public function setWins(int $wins)
+    {
+        $this->wins = $wins;
+
+        return $this;
+    }
+
+    public function setLosses(int $losses)
+    {
+        $this->losses = $losses;
+
+        return $this;
+    }
+
+    public function setDraws(int $draws)
+    {
+        $this->draws = $draws;
+
+        return $this;
     }
 
     public function build()

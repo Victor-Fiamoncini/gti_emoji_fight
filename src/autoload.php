@@ -1,6 +1,6 @@
 <?php
 
-function __autoload(string $className): void
+function __autoload(string $className)
 {
     $extensions = ['.php'];
     $sep = DIRECTORY_SEPARATOR;
@@ -8,7 +8,6 @@ function __autoload(string $className): void
     $folders = [
         'builders' . $sep,
         'entities' . $sep,
-        'entities' . $sep . 'types' . $sep,
     ];
 
     foreach ($folders as $folder) {

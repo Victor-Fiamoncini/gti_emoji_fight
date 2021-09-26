@@ -2,12 +2,12 @@
 
 class Fighter
 {
-    private string $name;
-    private string $nationality;
-    private int $age;
-    private float $height;
-    private float $weight;
-    private string $category;
+    private string $name = '';
+    private string $nationality = '';
+    private int $age = 0;
+    private float $height = 0;
+    private float $weight = 0;
+    private string $category = '';
     private int $wins = 0;
     private int $losses = 0;
     private int $draws = 0;
@@ -20,6 +20,19 @@ class Fighter
         $this->height = $fighterBuilder->height;
         $this->weight = $fighterBuilder->weight;
         $this->category = $fighterBuilder->category;
+        $this->wins = $fighterBuilder->wins;
+        $this->losses = $fighterBuilder->losses;
+        $this->draws = $fighterBuilder->draws;
+    }
+
+    public function getCatergory()
+    {
+        return $this->category;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
     public function show()
@@ -33,6 +46,7 @@ class Fighter
             Ganhou: {$this->wins};
             Perdeu: {$this->losses};
             Empatou: {$this->draws};
+            <br />
         ";
     }
 
@@ -44,6 +58,7 @@ class Fighter
             {$this->wins} vitórias;
             {$this->losses} derrotas;
             {$this->draws} empates;
+            <br />
         ";
     }
 
